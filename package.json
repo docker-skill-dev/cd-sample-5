@@ -1,0 +1,40 @@
+{
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Atomist",
+    "email": "oss@atomist.com",
+    "url": "https://atomist.com"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "skill": "run-s skill:generate",
+    "skill:clean": "atm-skill clean",
+    "skill:generate": "atm-skill generate --no-artifacts",
+    "skill:package": "atm-skill package",
+    "skill:register": "atm-skill register",
+    "atm:lint:prettier": "prettier --write"
+  },
+  "dependencies": {
+    "@atomist/skill": "^1.0.0-branch-v2.13"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "mocha": "^8.4.0",
+    "npm-run-all": "^4.1.5",
+    "power-assert": "^1.6.1",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "supervisor": "^0.12.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.@(graphql|json|markdown|yaml|yml|md)": "npm run atm:lint:prettier"
+  }
+}
